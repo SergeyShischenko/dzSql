@@ -10,16 +10,17 @@
     <form action="add_new_user.php" method="post">
 
         <label>Должность:</label><br>
-        <select name="roleId">
-            <option name="admin">Администратор</option>
-            <option name="menedger">Менеджер</option>
+        <input type="hidden" name="actRole">
+        <select name="roleId" id="roleId">
+            <option value="1">Администратор</option>
+            <option value="2">Менеджер</option>
         </select><br><br>
 
         <label>Улица:</label><br>
-
-        <select name="addressStreetId">
-            <option name="solomenka">Соломенка</option>
-            <option name="lasheka">Ляшека</option>
+        <input type="hidden" name="addrStr">
+        <select name="addressStreetId" id="addressStreetId">
+            <option value="3">Соломенка</option>
+            <option value="4">Ляшека</option>
         </select><br><br>
 
         <input type="text" required="required" name="firstName" placeholder="Имя"><br>
@@ -31,6 +32,7 @@
         <input type="submit">
     </form>
 </div>
+
 
 </body>
 </html>

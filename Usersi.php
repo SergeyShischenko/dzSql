@@ -297,8 +297,8 @@ class Usersi extends Connectic
             ':phone' => $this->getPhone(),
             ':email' => $this->getEmail(),
             ':password' => $this->getPassword(),
-            ':roleId'=> '2',
-            ':addressStreetId' => '4',
+            ':roleId' => $this->getRoleId(),
+            ':addressStreetId' => $this->getAddressStreetId(),
         ]);
     }
 
