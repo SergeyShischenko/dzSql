@@ -153,6 +153,10 @@ class Usersi extends Connectic
         return $sth->fetchAll();
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function selectById($id)
     {
         $pdo = Connectic::makeConnect();
@@ -181,6 +185,9 @@ class Usersi extends Connectic
         return $sth->fetchAll();
     }
 
+    /**
+     * @return array
+     */
     public function orderBy()
     {
         $pdo = Connectic::makeConnect();
@@ -192,6 +199,9 @@ class Usersi extends Connectic
         return $stmt->fetchAll();
     }
 
+    /**
+     * @return array
+     */
     public function groupBy()
     {
         $pdo = Connectic::makeConnect();
@@ -203,6 +213,9 @@ class Usersi extends Connectic
         return $stmt->fetchAll();
     }
 
+    /**
+     * @return array
+     */
     public function distinctUsers()
     {
         $pdo = Connectic::makeConnect();
@@ -214,6 +227,9 @@ class Usersi extends Connectic
         return $stmt->fetchAll();
     }
 
+    /**
+     * @return array
+     */
     public function joinUsers()
     {
         $pdo = Connectic::makeConnect();
@@ -271,6 +287,9 @@ class Usersi extends Connectic
     ]);
 }
 
+    /**
+     * @param $id
+     */
     public function deleteUsers($id)
     {
         $_POST ['id'] = $id;
@@ -279,6 +298,4 @@ class Usersi extends Connectic
         $sth->bindParam(':id', $_POST['id']);
         $sth->execute();
     }
-
-
 }
