@@ -20,25 +20,11 @@ option_products(option_id, product_id)
 
 Для всех таблиц создать классы, кроме option_products (она связующая и помагает сделать связь многие ко многим). Сделать табличный вывод всех данных через использованием обьектов. А также для каждой таблички создать действие удалить и формы для создания, редактирования данных.*/
 //Описание
-require_once 'dev.php';
+require_once 'Connectic.php';
+require_once 'Class/AddressCountries.php';
 
-$users = new Usersi();
-$resQuery = $users->selectAll();
-$resQuery2 = $users->selectWhere();
-$resQuery3 = $users->orderBy();
-$resQuery4 = $users->groupBy();
-$resQuery5 = $users->distinctUsers();
-$resQuery6 = $users->joinUsers();
-$users->setPassword('222');
-$resQuery7 = $users->getPassword();
+$addresCountri = new AddressCountries();
 
+$addresCountri->setName('Америка');
+echo $addresCountri->getName();
 
-//
-//foreach ($resQuery as $res) {
-//    var_dump($res);
-//
-//}
-
-
-
-echo $resQuery7;

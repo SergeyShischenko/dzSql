@@ -33,6 +33,51 @@ class Usersi extends Connectic
      */
     private $password;
 
+    /**
+     * @var int
+     */
+    private $roleId;
+
+    /**
+     * @var int
+     */
+    private $addressStreetId;
+
+    /**
+     * @return mixed
+     */
+    public function getRoleId()
+    {
+        return $this->roleId;
+    }
+
+    /**
+     * @param mixed $roleId
+     */
+    public function setRoleId($roleId): void
+    {
+        $this->roleId = $roleId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddressStreetId()
+    {
+        return $this->addressStreetId;
+    }
+
+    /**
+     * @param mixed $addressStreetId
+     */
+    public function setAddressStreetId($addressStreetId): void
+    {
+        $this->addressStreetId = $addressStreetId;
+    }
+
+
+
+
     public function setId($id)
     {
         $this->id = $id;
