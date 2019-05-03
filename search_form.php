@@ -9,9 +9,12 @@
 
     <?php
 
-    if (!empty($phone)) {
-        echo 'Результат поиска :'.$phone->getFirstName().' '. $phone->getLastName().', '. 'телефон :'.' '.$phone->getPhone();
+    foreach ($searchResult as $phone){
+        if (!empty($phone)) {
+            echo 'Результат поиска :'.$phone->getFirstName().' '. $phone->getLastName().', '. 'телефон :'.' '.$phone->getPhone().'<br>';
+        }
     }
+
 
 
 

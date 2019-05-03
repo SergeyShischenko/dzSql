@@ -27,5 +27,5 @@ require_once 'Usersi.php';
 
 $user = new Usersi();
 
-var_dump($user->orderByPhone());
+var_dump($user->searchByPhone('9000'));
 

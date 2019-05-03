@@ -8,8 +8,5 @@ require_once 'Usersi.php';
         !key_exists('search', $_POST) ?: $searchUser->setPhone($_POST['search']);
         $searchResult = $searchUser->searchByPhone($_POST['search']);
 
-        foreach ($searchResult as $phone):
-        endforeach;
-    }else
+    }
 
-    header('Location: usersss.php');
