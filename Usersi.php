@@ -217,15 +217,17 @@ class Usersi extends Connectic
         return $sth->fetchAll();
     }
 
-    public function searchByPhone($phone)
+    public function searchByPhone($phone = null, $firstName = null, $lastName = null)
     {
         $pdo = Connectic::makeConnect();
         $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
-        $sql = "SELECT * FROM users WHERE phone = :phone";
+        $sql = "SELECT * FROM users WHERE (phone = :phone OR firstName = :firstName OR lastName = :lastName)";
         $stmt = $pdo->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usersi');
         $stmt->execute([
             'phone' => $phone,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
         ]);
         return $stmt->fetchAll();
     }
