@@ -17,7 +17,6 @@ endforeach;
     !key_exists('phone', $_POST) ?: $newUsersi->setPhone($_POST['phone']);
     !key_exists('email', $_POST) ?: $newUsersi->setEmail($_POST['email']);
 
-
         if (
             key_exists('password', $_POST)
             && key_exists('passwordConfirm', $_POST)
