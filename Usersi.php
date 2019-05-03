@@ -314,7 +314,7 @@ class Usersi extends Connectic
         $sth = Connectic::makeConnect()->prepare($sql);
         $sth->execute([
             ':id' => NULL,
-            ':firstName' => $this->getFirstName(),
+            ':firstName' => htmlspecialchars($this->getFirstName()),
             ':lastName' => $this->getLastName(),
             ':phone' => $this->getPhone(),
             ':email' => $this->getEmail(),

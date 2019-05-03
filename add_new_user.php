@@ -1,8 +1,7 @@
 <?php
 require_once 'Connectic.php';
 require_once 'Usersi.php';
-//$newUser2 = new Usersi();
-//echo $newUser2->getRoleId();
+
 if (!empty($_POST)) {
     $newUser = new Usersi();
 

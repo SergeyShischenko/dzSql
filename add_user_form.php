@@ -10,15 +10,17 @@
     <form action="add_new_user.php" method="post">
 
         <label>Должность:</label><br>
-        <input type="hidden" name="actRole">
-        <select name="roleId" id="roleId">
+        <input type="hidden" name="actRole" required="required">
+        <select name="roleId" id="roleId" required="required">
+            <option disabled selected >Выбрать должность:</option>
             <option value="1">Администратор</option>
             <option value="2">Менеджер</option>
         </select><br><br>
 
         <label>Улица:</label><br>
-        <input type="hidden" name="addrStr">
-        <select name="addressStreetId" id="addressStreetId">
+        <input type="hidden" name="addrStr" required="required">
+        <select name="addressStreetId" id="addressStreetId" required="required">
+            <option  disabled selected >Выбрать улицу:</option>
             <option value="3">Соломенка</option>
             <option value="4">Ляшека</option>
         </select><br><br>
