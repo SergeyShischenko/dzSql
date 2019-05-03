@@ -8,14 +8,13 @@
 <?php require_once 'search.php'?>
 
     <?php
-
-    foreach ($searchResult as $phone){
-        if (!empty($phone)) {
-            echo 'Результат поиска :'.$phone->getFirstName().' '. $phone->getLastName().', '. 'телефон :'.' '.$phone->getPhone().'<br>';
+    if (!empty($searchResult)) {
+        foreach ($searchResult as $phone){
+            if (!empty($phone)) {
+                echo 'Результат поиска :'.$phone->getFirstName().' '. $phone->getLastName().', '. 'телефон :'.' '.$phone->getPhone().'<br>';
+            } else exit();
         }
     }
-
-
 
 
     ?><br><br>
