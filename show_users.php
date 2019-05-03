@@ -12,24 +12,15 @@
     <form action="usersss.php" method="post">
 
     <label>Сортировать:</label><br>
-    <input type="hidden" name="sort_whot">
-    <select name="sort_what_name" id="sort_what_name">
-        <option value="sort_lastName">По фамилии</option>
-        <option value="sort_phone">По телефону</option>
-    </select><br><br>
-
-    <label>Сортировать:</label><br>
-    <input type="hidden" name="sort_by">
+    <input type="hidden">
     <select name="sort_by_growth" id="sort_by_growth">
-        <option value="bottom">По убыванию</option>
-        <option value="top">По возрастанию</option>
+        <option disabled selected>Выбрать</option>
+        <option value="desc">По убыванию</option>
+        <option value="asc">По возрастанию</option>
     </select>
+        <input type="submit" value="Сортировать">
 
-
-
-
-
-</form><br>
+    </form><br>
 
 
 <table border="1">

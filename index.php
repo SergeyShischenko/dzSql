@@ -22,9 +22,10 @@ option_products(option_id, product_id)
 //Описание
 require_once 'Connectic.php';
 require_once 'Class/AddressCountries.php';
+require_once 'Usersi.php';
 
-$addresCountri = new AddressCountries();
 
-$addresCountri->setName('Америка');
-echo $addresCountri->getName();
+$user = new Usersi();
+
+var_dump($user->orderByPhone());
 

@@ -3,6 +3,9 @@
 
 class Usersi extends Connectic
 {
+
+    private $sortByGrowth;
+
     /**
      * @var int
      */
@@ -42,6 +45,22 @@ class Usersi extends Connectic
      * @var int
      */
     private $addressStreetId;
+
+    /**
+     * @return mixed
+     */
+    public function getSortByGrowth()
+    {
+        return $this->sortByGrowth;
+    }
+
+    /**
+     * @param mixed $sortByGrowth
+     */
+    public function setSortByGrowth($sortByGrowth): void
+    {
+        $this->sortByGrowth = $sortByGrowth;
+    }
 
     /**
      * @return mixed
@@ -288,6 +307,32 @@ class Usersi extends Connectic
             ':roleId' => $this->getRoleId(),
             ':addressStreetId' => $this->getAddressStreetId(),
         ]);
+    }
+//
+//    public function orderByPhoneAsc()
+//    {
+//        $pdo = Connectic::makeConnect();
+//        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+//        $sql = "SELECT * FROM users ORDER BY phone ASC";
+//        $stmt = $pdo->prepare($sql);
+//        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usersi');
+//        $stmt->execute();
+//        return $stmt->fetchAll();
+//    }
+
+    public function orderByPhoneAsc($sort)
+    {
+        $pdo = Connectic::makeConnect();
+        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+        if ($sort == 'asc') {
+            $sql = "SELECT * FROM users ORDER BY phone ASC";
+        } elseif ($sort == 'desc') {
+            $sql = "SELECT * FROM users ORDER BY phone DESC";
+        }
+        $stmt = $pdo->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usersi');
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
 //    public function updateUsers(Usersi $user)
