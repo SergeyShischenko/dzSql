@@ -230,19 +230,7 @@ class Usersi extends Connectic
         return $sth->fetchAll();
     }
 
-    /**
-     * @return array
-     */
-    public function orderBy()
-    {
-        $pdo = Connectic::makeConnect();
-        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
-        $sql = "SELECT firstName, lastName, phone FROM users ORDER BY phone DESC";
-        $stmt = $pdo->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usersi');
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+
 
     /**
      * @return array
