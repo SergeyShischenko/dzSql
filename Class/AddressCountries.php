@@ -38,7 +38,16 @@ class AddressCountries extends Connectic
             ':id' => null,
             ':name'=> $this->getNameCountri(),
         ]);
+    }
 
-
+    public function selectCountris()
+    {
+        $pdo = Connectic::makeConnect();
+        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+        $sql = "SELECT * FROM address_countries";
+        $stmt = $pdo->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'AddressCountries');
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }
