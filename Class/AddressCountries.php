@@ -1,6 +1,5 @@
 <?php
 
-
 class AddressCountries extends Connectic
 {
     private $id;
@@ -30,6 +29,7 @@ class AddressCountries extends Connectic
         $this->name = $name;
     }
 
+
     public function insertCountri()
     {
         $sql = "INSERT INTO address_countries(id, name) VALUES (:id, :name)";
@@ -40,6 +40,9 @@ class AddressCountries extends Connectic
         ]);
     }
 
+    /**
+     * @return array
+     */
     public function selectCountris()
     {
         $pdo = Connectic::makeConnect();
@@ -49,5 +52,35 @@ class AddressCountries extends Connectic
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'AddressCountries');
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function selectById($id)
+    {
+        $pdo = Connectic::makeConnect();
+        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+        $sql = "SELECT * FROM address_countries WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'AddressCountries');
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * @param $id
+     * @param $name
+     */
+    public function updateCountriName($id, $name)
+    {
+        $pdo = Connectic::makeConnect();
+        $sql = "UPDATE address_countries SET name = :name WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':name' => $name,
+        ]);
     }
 }

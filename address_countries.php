@@ -1,15 +1,35 @@
 <?php
+
 require_once 'Connectic.php';
 require_once 'Class/AddressCountries.php';
 
 $addressCountry = new AddressCountries();
 $allCountris = $addressCountry->selectCountris();
 
-if (!empty($_POST)) {
-    !key_exists('add_country', $_POST) ?: $addressCountry->setNameCountri($_POST['add_country']);
+$selectById = $addressCountry->selectById($_GET['id']);
 
-    $addressCountry->insertCountri();
-    header('Location: admin_panel.php');
-}
+foreach ($selectById as $countri):
+    endforeach;
 
-require_once 'form_address_countries.php';
+            if (!empty($_POST['add_country'])) {
+                !key_exists('add_country', $_POST) ?: $addressCountry->setNameCountri($_POST['add_country']);
+
+                $addressCountry->insertCountri();
+                header('Location: admin_panel.php');
+            }
+
+            if (!empty($_POST)) {
+
+                if (is_string($_POST['id_country']) && is_string($_POST['update_country'])){
+                    $id = $_POST['id_country'];
+                    $name = $_POST['update_country'];
+                    $addressCountry->updateCountriName($id, $name);
+                    header('Location: admin_panel.php');
+                }
+            }
+
+
+
+
+
+
