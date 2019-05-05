@@ -39,6 +39,9 @@
         <tr>
             <td><?php echo ++$i; ?></td>
             <td><?php echo $citi->getName()?></td>
+            <td>
+                <a href="Form/edit_address_citic_form.php?id=<?php echo $citi->getId()?>">Редактировать</a>
+            </td>
         </tr>
             <?php endforeach;?>
         </table><br><br>

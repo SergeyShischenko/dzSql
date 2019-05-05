@@ -69,6 +69,31 @@ class AddressCities extends Connectic
         return $stmt->fetchAll();
     }
 
+    public function selectCitiById($id)
+    {
+        $pdo = Connectic::makeConnect();
+        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+        $sql = "SELECT * FROM address_cities WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'AddressCities');
+        $stmt->execute([
+            ':id' => $id,
+        ]);
+        return $stmt->fetchAll();
+    }
+
+    public function updateCitiesName($id, $name)
+    {
+        $pdo = Connectic::makeConnect();
+        $sql = "UPDATE address_cities SET name = :name WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':name' => $name,
+        ]);
+
+    }
+
 
 
 }
