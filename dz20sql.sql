@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 27 2019 г., 17:34
+-- Время создания: Май 06 2019 г., 12:18
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -40,7 +40,15 @@ CREATE TABLE `address_cities` (
 
 INSERT INTO `address_cities` (`id`, `countryId`, `name`) VALUES
 (1, 4, 'Киев'),
-(2, 5, 'Варшава');
+(2, 5, 'Варшавка'),
+(11, 4, 'Тернополь'),
+(12, 7, 'Берлин'),
+(13, 6, 'Вашингтон'),
+(15, 8, 'Париж'),
+(17, 9, 'Рим'),
+(21, 4, 'Львов'),
+(22, 4, 'Днепро'),
+(23, 13, 'Питербург');
 
 -- --------------------------------------------------------
 
@@ -58,8 +66,14 @@ CREATE TABLE `address_countries` (
 --
 
 INSERT INTO `address_countries` (`id`, `name`) VALUES
+(6, 'Америка'),
+(7, 'Германия'),
+(9, 'Италия'),
+(15, 'Канада'),
+(5, 'Польша'),
+(13, 'Россия'),
 (4, 'Украина'),
-(5, 'Польша');
+(8, 'Франция');
 
 -- --------------------------------------------------------
 
@@ -122,6 +136,14 @@ CREATE TABLE `company` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `company`
+--
+
+INSERT INTO `company` (`id`, `name`) VALUES
+(1, 'Киев-Компани'),
+(2, 'Луганск-Компани');
+
 -- --------------------------------------------------------
 
 --
@@ -172,6 +194,14 @@ CREATE TABLE `products` (
   `price` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `countryId`, `typeId`, `categoryId`, `description`, `price`) VALUES
+(1, 'Картошка', 5, 1, 8, 'Польская картошка.', 9),
+(2, 'Утюги', 4, 2, 2, 'Украинские утюги', 250);
+
 -- --------------------------------------------------------
 
 --
@@ -182,6 +212,14 @@ CREATE TABLE `types` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `types`
+--
+
+INSERT INTO `types` (`id`, `name`) VALUES
+(1, 'Пищевые'),
+(2, 'Не пищевые');
 
 -- --------------------------------------------------------
 
@@ -205,16 +243,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `phone`, `email`, `password`, `roleId`, `addressStreetId`) VALUES
-(1, 'Жора', 'Иванова', '3000', 'ssf1@test.com', '123456fff', 1, 4),
-(3, 'Петр', 'Токарев', '3200', 'kkk@dd.com', '554545', 2, 3),
-(5, 'Егор ', 'Иванов', '1200', 'swswsw@test.com', '54461ceefef', 2, 3),
-(6, 'Егор', 'Сидоров', '6000', 'hferrrt5fh@fgh.com', 'ed4913037c47f898ed494da9452da47dbe5c37cafe08fed968aead191b887baf', 2, 4),
-(8, 'Сергей', 'Петров', '7300', 's5522f@test.com', '262923', 2, 4),
-(9, 'Сергей', 'Иванов', '5863', 'dsefg@dfg.com', 'edf3f', 1, 3),
-(11, 'Петр', 'Токарев', '1560', 'ddswfgg@test.com', '315351864', 1, 4),
-(12, 'Инна', 'Иванова', '3655', 'ddfg@klkl.com', 'rvregg', 1, 3),
-(13, 'Иван', 'Токарев', '9500', 'hfhfh@fgh.com', '022fa3aeb8b4cface16a46e5b6e5c116245f8af01d9f9ce14f8b93c2ee5076fc', 2, 4),
-(14, 'Иван', 'Токарев', '9500', 'hffrfh@fgh.com', '022fa3aeb8b4cface16a46e5b6e5c116245f8af01d9f9ce14f8b93c2ee5076fc', 2, 4);
+(8, 'Сергей', 'Петров', '9000', 's5522f@test.com', 'a', 2, 4),
+(9, 'Сергей', 'Иванов', '9000', 'dsefg@dfg.com', 'x', 1, 3),
+(11, 'Илья', 'Токарева', '1560', 'ddswfgg@test.com', 'w', 1, 4),
+(18, 'Вова', 'Токарев', '6750', 'svh7@meta.ua', 'w', 2, 4),
+(21, 'Толик', 'Иванов', '5684', 'svh88@meta.ua', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 2, 4),
+(23, 'Админ', 'Соломенков', '2252', 'svh71@meta.ua', 'db24808de032b66d06636425f69e425018ce63bd094dd168cd98729462a0e1e8', 1, 3),
+(24, 'Георгий', 'Нагаев', '063-335-13-28', 'jora@meta.ua', 'a', 1, 3),
+(25, 'Ольга', 'Сидорова', '5258', 'olga@meta.ua', '3538a1ef2e113da64249eea7bd068b585ec7ce5df73b2d1e319d8c9bf47eb314', 1, 3),
+(26, '&lt;?Иван*?&gt;', 'Петров', '6363', 'svh1@meta.ua', '18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4', 1, 3),
+(27, 'Виктор', 'Викторов', '5222', '25358@meta.ua', '91a73fd806ab2c005c13b4dc19130a884e909dea3f72d46e30266fe1a1f588d8', 1, 3),
+(28, 'Вован', 'Пуговкий', '5228', 'kolia@test.com', '8b940be7fb78aaa6b6567dd7a3987996947460df1c668e698eb92ca77e425349', 2, 4),
+(29, 'Ольга', 'Ивченко', '063-840-40-30', 'vmartevesna@gmail.com', '3eee72dc96a778bb8a32b9295647bdf80af511cc458ced25fcbf77ae6350aa2e', 1, 3),
+(30, 'Додик', 'Боров', '2558', 'kolia@test.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -247,13 +288,15 @@ INSERT INTO `user_roles` (`id`, `name`, `keyu`, `createAt`, `updateAt`) VALUES
 --
 ALTER TABLE `address_cities`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
   ADD KEY `countryId` (`countryId`);
 
 --
 -- Индексы таблицы `address_countries`
 --
 ALTER TABLE `address_countries`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Индексы таблицы `address_streets`
@@ -266,8 +309,10 @@ ALTER TABLE `address_streets`
 -- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`),
-  ADD KEY `parentId` (`parentId`);
+  ADD KEY `parentId` (`parentId`),
+  ADD KEY `id_2` (`id`);
 
 --
 -- Индексы таблицы `company`
@@ -324,13 +369,13 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT для таблицы `address_cities`
 --
 ALTER TABLE `address_cities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT для таблицы `address_countries`
 --
 ALTER TABLE `address_countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT для таблицы `address_streets`
@@ -342,7 +387,7 @@ ALTER TABLE `address_streets`
 -- AUTO_INCREMENT для таблицы `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `options`
@@ -360,19 +405,19 @@ ALTER TABLE `option_types`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `types`
 --
 ALTER TABLE `types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `user_roles`
@@ -408,7 +453,7 @@ ALTER TABLE `categories`
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`countryId`) REFERENCES `address_countries` (`id`),
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`typeId`) REFERENCES `types` (`id`),
-  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`parentId`);
+  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `users`
