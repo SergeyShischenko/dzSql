@@ -41,7 +41,7 @@
         <td><?php echo ++$i; ?></td>
         <td><?php echo $street->getType()?></td>
         <td><?php echo $street->getName()?></td>
-        <td><a href="Form/address_streets_edit_form.php?id<?php echo $street->getId()?>">Редактировать</a></td>
+        <td><a href="Form/address_streets_edit_form.php?id=<?php echo $street->getId()?>">Редактировать</a></td>
     </tr>
         <?php endforeach;?>
 
