@@ -67,7 +67,7 @@ class AddressStreets extends Connectic
     {
         $pdo = Connectic::makeConnect();
         $pdo->setAttribute(PDO::FETCH_CLASS, PDO::CASE_NATURAL);
-        $sql = "SELECT * FROM address_streets WHETE id = :id";
+        $sql = "SELECT * FROM address_streets WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'AddressStreets');
         $stmt->execute([
@@ -102,18 +102,18 @@ class AddressStreets extends Connectic
         ]);
     }
 
-//    public function insertStreet($idCiti)
-//    {
-//        $pdo = Connectic::makeConnect();
-//        $sql = "INSERT INTO address_streets(id, cityId, type, name) VALUES (:id, :cityId, :type, :name)";
-//        $stmt = $pdo->prepare($sql);
-//        $stmt->execute([
-//            ':id' => null,
-//            ':cityId' => $idCiti,
-//            ':type' => $this->getType(),
-//            ':name' => $this->getName(),
-//        ]);
-//    }
+    public function updateStreet($id)
+    {
+        $pdo = Connectic::makeConnect();
+        $sql = "UPDATE address_streets SET name=:name WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':name' => $this->getName(),
+        ]);
+    }
+
+
 
 
 

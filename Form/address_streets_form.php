@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Город.</title>
+    <title>Улица.</title>
 </head>
 <body>
 
@@ -14,7 +14,6 @@
         <select name="id_citi">
             <?php $i = 0;?>
             <?php foreach ($allCitis as $citi):?>
-<!--            <option disabled selected>Выбрать город</option>-->
             <option value="<?php echo $citi->getId();?>"><?php echo $citi->getName()?></option>
             <?php endforeach;?>
 
@@ -41,7 +40,7 @@
         <td><?php echo ++$i; ?></td>
         <td><?php echo $street->getType()?></td>
         <td><?php echo $street->getName()?></td>
-        <td><a href="Form/address_streets_edit_form.php?id<?php echo $street->getId()?>">Редактировать</a></td>
+        <td><a href="Form/address_streets_edit_form.php?id=<?php echo $street->getId()?>">Редактировать</a></td>
     </tr>
         <?php endforeach;?>
 
