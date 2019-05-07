@@ -21,11 +21,14 @@ option_products(option_id, product_id)
 Для всех таблиц создать классы, кроме option_products (она связующая и помагает сделать связь многие ко многим). Сделать табличный вывод всех данных через использованием обьектов. А также для каждой таблички создать действие удалить и формы для создания, редактирования данных.*/
 //Описание
 require_once 'Connectic.php';
-require_once 'Class/AddressCountries.php';
-require_once 'Usersi.php';
+require_once 'Class/AddressStreets.php';
+//require_once 'Usersi.php';
 
 
-$user = new Usersi();
+$addressStreet = new AddressStreets();
 
-var_dump($user->searchByPhone('9000'));
+$addressStreet->setName('Кадетский Гай');
+$addressStreet->setType('Улица');
+
+$addressStreet->insertStreet();
 
