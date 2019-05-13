@@ -3,7 +3,7 @@
 class AddressStreets extends Connectic
 {
     private $id;
-    private $sityId;
+    private $cityId;
     private $type;
     private $name;
 
@@ -18,17 +18,17 @@ class AddressStreets extends Connectic
     /**
      * @return mixed
      */
-    public function getSityId()
+    public function getCityId()
     {
-        return $this->sityId;
+        return $this->cityId;
     }
 
     /**
-     * @param mixed $sityId
+     * @param mixed $cityId
      */
-    public function setSityId($sityId): void
+    public function setCityId($cityId): void
     {
-        $this->sityId = $sityId;
+        $this->sityId = $cityId;
     }
 
     /**
@@ -117,5 +117,23 @@ class AddressStreets extends Connectic
             ':name' => $this->getName(),
         ]);
     }
+
+    public function selectUnionTabl()
+    {
+        $pdo = Connectic::makeConnect();
+        $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+
+
+        $sql = "SELECT * FROM address_countries 
+        LEFT JOIN address_cities ON address_countries.id = address_cities.countryId 
+        LEFT JOIN address_streets ON address_cities.id = address_streets.cityId";
+
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'AddressStreets');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 
 }

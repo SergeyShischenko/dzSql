@@ -337,22 +337,6 @@ class Usersi extends Connectic
     }
 
 
-//    public function updateUsers(Usersi $user)
-//    {
-//        $sql = "UPDATE users SET firstName = :firstName, lastName = :lastName, phone = :phone, email = :email, password = :password WHERE id = :id";
-//        $sth = Connectic::makeConnect()->prepare($sql);
-//        $sth->execute([
-//            ':firstName' => $user->getFirstName(),
-//            ':lastName' => $user->getLastName(),
-//            ':phone' => $user->getPhone(),
-//            ':email' => $user->getEmail(),
-//            ':password' => $user->getPassword(),
-//            ':id' => $user->getId(),
-//        ]);
-//    }
-
-
-
     public function updateUsers($id, $firstName = null, $lastName = null, $phone = null, $email =null, $password =null)
 {
     $sql = "UPDATE users SET firstName = :firstName, lastName = :lastName, phone = :phone, email = :email, password = :password WHERE id = :id";
